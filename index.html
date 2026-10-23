@@ -59,4 +59,56 @@ var L=[
 {y:"dr",q:"¿Salada o dulce? Lleva cada lugar a su caja.",b:[["s","Agua salada","🌊"],["d","Agua dulce","💧"]],i:[["Océano Pacífico","s"],["Mar","s"],["Río","d"],["Lago Titicaca","d"],["Glaciar","d"],["Laguna de montaña","d"]],e:"El agua de mar es salada. Ríos, lagos, lagunas y glaciares tienen agua dulce, la que podemos beber (después de limpiarla)."},
 {y:"ch",q:"De las pocas gotas de agua dulce, ¿dónde está casi toda?",o:["Congelada en glaciares y hielo","En los ríos y lagos","En las nubes"],e:"Casi 7 de cada 10 gotas dulces están congeladas en glaciares. ¡Por eso hay que cuidar el agua dulce!",v:function(){return'<div class="seg"><div style="width:69%;background:#1e78c8">Hielo 69%</div><div style="width:30%;background:#8a5a34">Subterránea 30%</div><div style="width:1%;background:#2fb7c9"></div></div><div class="c" style="font-size:.8em">Ríos y lagos: ¡menos de 1%!</div>'}}]},
 {n:"Misión 2",t:"Los estados del agua",ic:"🧊",min:"10 min",tip:"Los equipos pueden pasar a la pantalla por turnos para arrastrar.",s:[
-{y:"dr",q:"¿Sólido, líquido o gaseoso? Arrastra cada uno a su caja.",b:[["s","Sólido","❄️"],["l","Líquido","💧"],["g","Gaseoso","☁️"]],i:[["Glaciar","s"],["Nieve","s"],["Hielo","s"],["Río","l"],["Mar","l"],["Lluvia","l"],["Nube","g"],["Vapor","g"],["Vapor de la olla","g"]],e:"Sólido: tiene forma propia (hielo). Líquido:
+{y:"dr",q:"¿Sólido, líquido o gaseoso? Arrastra cada uno a su caja.",b:[["s","Sólido","❄️"],["l","Líquido","💧"],["g","Gaseoso","☁️"]],i:[["Glaciar","s"],["Nieve","s"],["Hielo","s"],["Río","l"],["Mar","l"],["Lluvia","l"],["Nube","g"],["Vapor","g"],["Vapor de la olla","g"]],e:"Sólido: tiene forma propia (hielo). Líquido: fluye (ríos, mar, lluvia). Gaseoso: es vapor que flota en el aire (nubes)."},
+{y:"ch",q:"Si el hielo se calienta, ¿qué le pasa?",o:["Se derrite y se vuelve líquido","Se vuelve gas al instante","Se queda igual"],e:"El calor derrite el hielo: pasa de sólido a líquido. ¡Así se forman los ríos de los nevados!"},
+{y:"ch",q:"¿Qué necesita el agua líquida para volverse vapor?",o:["Calor","Frío","Sombra"],e:"Con calor, el agua se evapora y sube al cielo como vapor."}]},
+{n:"Misión 3",t:"El gran viaje del agua",ic:"☁️",min:"12 min",tip:"Haga que el grupo gesticule cada fase: ¡sol, nube, lluvia, río!",s:[
+{y:"ch",q:"El Sol calienta el agua del mar y se vuelve vapor que sube. ¿Cómo se llama?",o:["Evaporación","Condensación","Precipitación"],e:"¡Evaporación! El agua líquida se convierte en vapor y viaja hacia arriba.",v:function(){return strip(0)}},
+{y:"ch",q:"El vapor sube, se enfría y se junta formando nubes. ¿Cómo se llama?",o:["Condensación","Evaporación","Colección"],e:"¡Condensación! El vapor frío vuelve a ser gotitas y forma las nubes.",v:function(){return strip(1)}},
+{y:"ch",q:"Las nubes se llenan y el agua cae como lluvia, nieve o granizo. ¿Cómo se llama?",o:["Precipitación","Condensación","Evaporación"],e:"¡Precipitación! El agua vuelve a la tierra desde las nubes.",v:function(){return strip(2)}},
+{y:"ch",q:"El agua llega a ríos, lagos y mares, y todo vuelve a empezar. ¿Cómo se llama?",o:["Colección","Precipitación","Evaporación"],e:"¡Colección! El agua se reúne otra vez y el ciclo nunca termina.",v:function(){return strip(3)}},
+{y:"sq",q:"¡Reto final! Toca las fases en el orden correcto del ciclo.",i:["Evaporación","Condensación","Precipitación","Colección"],e:"¡Ciclo completo! Evaporación ➜ Condensación ➜ Precipitación ➜ Colección. El agua se recicla siempre.",v:function(){return strip(-1)}}]},
+{n:"Misión 4",t:"Superhéroes del agua",ic:"🦸",min:"10 min",tip:"Debatan cada decisión: ¿qué haría un superhéroe del agua?",s:[
+{y:"ch",q:"Te cepillas los dientes. ¿Qué haces?",o:["Cierro el grifo mientras me cepillo","Dejo el grifo abierto todo el tiempo"],e:"Cerrar el grifo ahorra muchos litros de agua cada día."},
+{y:"ch",q:"Ves un grifo que gotea en la escuela. ¿Qué haces?",o:["Aviso a un adulto para arreglarlo","No hago nada"],e:"Una gotera pierde litros de agua cada día. ¡Avisar es de superhéroes!"},
+{y:"ch",q:"Llegó la hora de bañarte. ¿Cuál es mejor?",o:["Una ducha corta","Una ducha muy larga jugando"],e:"Una ducha corta usa mucha menos agua."},
+{y:"ch",q:"Llovió y quedó agua limpia en un balde. ¿Qué haces?",o:["La uso para regar las plantas","La tiro a la calle"],e:"El agua de lluvia se puede reutilizar para las plantas."},
+{y:"ch",q:"Tienes una bolsa de basura cerca de un río. ¿Qué haces?",o:["La llevo al basurero","La tiro al río"],e:"La basura contamina el agua dulce, que es muy poquita. ¡Cuidemos los ríos!"},
+{y:"ch",q:"Vas a regar el jardín. ¿Cuándo es mejor?",o:["Temprano o al atardecer","Al mediodía con mucho sol"],e:"Con menos sol, el agua no se evapora tan rápido y rinde más."}]}];
+/* ===== MOTOR ===== */
+var $=function(i){return document.getElementById(i)},M=$("m"),li=0,si=0,err=0,done=0,TOT=0,ST=[],mute=false,AC;
+L.forEach(function(l){TOT+=l.s.length});
+function beep(f,d){if(mute)return;try{AC=AC||new(window.AudioContext||window.webkitAudioContext)();var o=AC.createOscillator(),g=AC.createGain();o.frequency.value=f;g.gain.value=.1;o.connect(g);g.connect(AC.destination);o.start();o.stop(AC.currentTime+d)}catch(e){}}
+function good(){beep(660,.1);setTimeout(function(){beep(880,.2)},110);fx()}function bad(){beep(180,.3)}
+function fx(){for(var i=0;i<10;i++){var s=document.createElement("span");s.className="fx";s.textContent=i%3?"💧":"⭐";s.style.left=Math.random()*95+"%";s.style.animationDelay=Math.random()*.4+"s";document.body.appendChild(s);setTimeout(function(x){x.remove()}.bind(null,s),2000)}}
+$("mu").onclick=function(){mute=!mute;this.textContent=mute?"🔇":"🔊"};
+function shuf(a){return a.slice().sort(function(){return Math.random()-.5})}
+function upd(){$("pb").style.width=(done/TOT*100)+"%";$("sc").textContent="⭐ "+ST.reduce(function(a,b){return a+b},0);$("lv").innerHTML=L.map(function(l,i){return'<span class="'+(i==li?"on":"")+'">'+l.ic+" "+l.n+'</span>'}).join("")}
+function intro(){var l=L[li];upd();err=0;si=0;M.innerHTML='<div class="card c"><div class="big">'+l.ic+'</div><h2>'+l.n+': '+l.t+'</h2><p>⏱️ Unos '+l.min+'</p><p style="font-size:.85em">👩‍🏫 '+l.tip+'</p><div class="row"><button class="btn" id="go">¡Empezar! ▶</button></div></div>';$("go").onclick=step;$("go").focus()}
+function start(){li=0;ST=[];done=0;intro()}
+function step(){var l=L[li];if(si>=l.s.length)return lend();upd();var s=l.s[si];({ch:rCh,dr:rDr,sq:rSq})[s.y](s)}
+function nextBtn(host){var b=document.createElement("div");b.className="row";b.innerHTML='<button class="btn" id="nx">Siguiente ▶</button>';host.appendChild(b);$("nx").onclick=function(){si++;done++;step()};$("nx").focus()}
+function expl(host,ok,s){var e=document.createElement("div");e.className="exp"+(ok?"":" bad");e.innerHTML='<h3>'+(ok?"¡Correcto! ✅":"¡Casi! ❌ Sigue intentando")+'</h3>'+s.e+(s.v?s.v():"");host.appendChild(e)}
+function rCh(s){M.innerHTML='<div class="card"><div class="q">'+s.q+'</div><div class="opts" id="os"></div><div id="fb"></div></div>';
+shuf(s.o.map(function(t,i){return[t,i]})).forEach(function(p,k){var b=document.createElement("button");b.className="opt";b.textContent="ABC"[k]+") "+p[0];b.onclick=function(){var ok=p[1]==0;[].forEach.call($("os").children,function(x){x.disabled=true});
+if(ok){b.classList.add("ok");good()}else{b.classList.add("no");bad();err++;[].forEach.call($("os").children,function(x){if(x.textContent.slice(3)==s.o[0])x.classList.add("ok")})}
+expl($("fb"),ok,s);nextBtn($("fb"))};$("os").appendChild(b)})}
+function rDr(s){var sel=null,left=s.i.length,tr={};M.innerHTML='<div class="card"><div class="q">'+s.q+'</div><div class="tray" id="tr"></div><div class="boxes" id="bx"></div><div id="fb"></div></div>';
+function place(i,k){var it=s.i[i],c=$("c"+i);if(it[1]==k){$("b"+k).appendChild(c);c.onpointerdown=null;c.onclick=null;c.disabled=true;c.classList.remove("sel");sel=null;left--;beep(760,.1);c.style.animation="pop .4s";if(!left){good();expl($("fb"),true,s);nextBtn($("fb"))}}
+else{if(!tr[i]){err++;tr[i]=1}bad();c.classList.add("sh");setTimeout(function(){c.classList.remove("sh")},400)}}
+shuf(s.i.map(function(x,i){return i})).forEach(function(i){var c=document.createElement("button");c.className="chip";c.id="c"+i;c.textContent=s.i[i][0];$("tr").appendChild(c);
+c.onclick=function(){if(sel!==null)$("c"+sel).classList.remove("sel");sel=i;c.classList.add("sel")};
+c.onpointerdown=function(e){if(e.pointerType=="mouse"&&e.button)return;var cl=c.cloneNode(true),r=c.getBoundingClientRect(),dx=e.clientX-r.left,dy=e.clientY-r.top,moved=false;cl.className="chip fl";cl.style.cssText="position:fixed;z-index:99;pointer-events:none;left:"+r.left+"px;top:"+r.top+"px";
+function mv(v){if(!moved){moved=true;document.body.appendChild(cl);c.style.opacity=.3}cl.style.left=v.clientX-dx+"px";cl.style.top=v.clientY-dy+"px"}
+function up(v){document.removeEventListener("pointermove",mv);document.removeEventListener("pointerup",up);document.removeEventListener("pointercancel",up);cl.remove();c.style.opacity=1;if(!moved)return;var t=document.elementFromPoint(v.clientX,v.clientY),b=t&&t.closest?t.closest(".box"):null;if(b)place(i,b.dataset.k)}
+document.addEventListener("pointermove",mv);document.addEventListener("pointerup",up);document.addEventListener("pointercancel",up)}});
+s.b.forEach(function(b){var d=document.createElement("div");d.className="box";d.id="b"+b[0];d.dataset.k=b[0];d.tabIndex=0;d.innerHTML='<div style="font-size:1.4em">'+b[2]+' '+b[1]+'</div>';
+d.onclick=function(e){if(e.target.classList.contains("chip"))return;if(sel!==null)place(sel,b[0])};d.onkeydown=function(e){if((e.key=="Enter"||e.key==" ")&&sel!==null){e.preventDefault();place(sel,b[0])}};$("bx").appendChild(d)})}
+function rSq(s){var n=0,tr=false;M.innerHTML='<div class="card"><div class="q">'+s.q+'</div><div class="sq" id="os"></div><div id="fb"></div></div>';
+shuf(s.i.map(function(t,i){return i})).forEach(function(i){var b=document.createElement("button");b.className="opt";b.textContent=s.i[i];b.onclick=function(){if(b.disabled)return;if(i==n){n++;b.disabled=true;b.classList.add("ok");b.insertAdjacentHTML("afterbegin",'<span class="n">'+n+'</span>');beep(700,.1);if(n==s.i.length){good();expl($("fb"),true,s);nextBtn($("fb"))}}else{err++;bad();b.classList.add("sh");setTimeout(function(){b.classList.remove("sh")},400)}};$("os").appendChild(b)})}
+function lend(){var l=L[li],k=err<=1?3:err<=3?2:1;ST.push(k);upd();var last=li==L.length-1;
+M.innerHTML='<div class="card c"><div class="big">'+"⭐⭐⭐".slice(0,k)+'</div><h2>¡'+l.n+' completada!</h2><p>'+(k==3?"¡Excelente trabajo en equipo!":k==2?"¡Muy bien! Puedes lograr las 3 estrellas.":"¡Buen intento! La próxima vez será mejor.")+'</p><div class="row"><button class="btn" id="go">'+(last?"Ver resultado final 🏆":"Siguiente misión ▶")+'</button></div></div>';good();$("go").onclick=function(){if(last)final();else{li++;intro()}};$("go").focus()}
+function final(){var t=ST.reduce(function(a,b){return a+b},0);upd();
+M.innerHTML='<div class="card c"><div class="big">🦸💧</div><h2>¡Son Superhéroes del Agua!</h2><p>Lograron <b>'+t+' de '+L.length*3+' estrellas</b>.</p><p>'+L.map(function(l,i){return l.ic+" "+"⭐".repeat(ST[i])}).join(" · ")+'</p><p>El agua es poquita y valiosa: ¡cuidémosla cada día!</p><div class="row"><button class="btn" id="rp">Jugar otra vez 🔄</button></div></div>';good();$("rp").onclick=start}
+start();
+</script></body></html>
