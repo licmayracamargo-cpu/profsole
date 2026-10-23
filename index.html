@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>El agua en la Tierra</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6fbff;--card:#fff;--ink:#2a2118;--bl:#1e78c8;--bl2:#d9ecfb;--br:#8a5a34;--br2:#f2e5d4;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#10202e;--card:#1b2f42;--ink:#f4ece2;--bl:#4aa3f0;--bl2:#1f4766;--br:#c9955f;--br2:#4a3524;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#10202e;--card:#1b2f42;--ink:#f4ece2;--bl:#4aa3f0;--bl2:#1f4766;--br:#c9955f;--br2:#4a3524;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font:600 clamp(18px,2.1vw,25px)/1.35 "Baloo 2","Trebuchet MS",sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:10px 16px 26px}
+header{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+header h1{margin:0;font-size:clamp(24px,3.6vw,36px);font-weight:800;color:var(--bl);flex:1}
+.pill{background:var(--br2);border:3px solid var(--br);border-radius:16px;padding:0 14px;font-weight:800;font-size:.85em}
+.bar{height:20px;background:var(--bl2);border-radius:20px;overflow:hidden;border:2px solid var(--bl);margin:8px 0 2px}.bar i{display:block;height:100%;width:0;background:var(--br);transition:width .5s}
+.lv{display:flex;gap:6px;font-size:.75em;justify-content:space-between}.lv span{flex:1;text-align:center;border-radius:10px;background:var(--bl2);padding:0 4px}.lv .on{background:var(--bl);color:#fff}
+.card{background:var(--card);border:4px solid var(--bl);border-radius:26px;padding:clamp(14px,2.4vw,24px);margin-top:10px}
+.c{text-align:center}.big{font-size:84px;line-height:1}
+h2{margin:4px 0 8px;font-size:1.35em;color:var(--br)}
+.q{font-size:1.3em;font-weight:800;margin:6px 0 12px}
+.opts{display:grid;gap:10px}
+.opt{font:inherit;font-weight:700;text-align:left;background:var(--card);color:var(--ink);border:4px solid var(--br);border-radius:18px;padding:10px 16px;cursor:pointer}
+.opt:hover:not(:disabled){background:var(--br2)}.opt:disabled{cursor:default}
+.opt.ok{background:var(--bl);border-color:var(--bl);color:#fff;animation:pop .5s}.opt.no{background:var(--br);color:#fff;animation:sh .4s}
+.btn{font:inherit;font-weight:800;font-size:1.05em;background:var(--bl);color:#fff;border:0;border-radius:16px;padding:8px 24px;cursor:pointer;box-shadow:0 5px 0 rgba(0,0,0,.25)}
+.btn.b{background:var(--br)}.btn:active{transform:translateY(3px)}
+.btn:focus-visible,.opt:focus-visible,.box:focus-visible,.chip:focus-visible{outline:4px solid #ffb300;outline-offset:2px}
+.row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:12px}
+.exp{margin-top:12px;border-radius:18px;padding:12px 16px;border:4px solid var(--bl);background:var(--bl2)}.exp.bad{border-color:var(--br);background:var(--br2)}
+.exp h3{margin:0 0 4px}
+.drops{display:grid;grid-template-columns:repeat(20,1fr);gap:2px;max-width:480px;margin:10px auto;font-size:clamp(10px,2vw,18px);line-height:1}
+.drops i{font-style:normal;animation:pop .6s backwards}.drops .f{opacity:1}
+.seg{display:flex;height:46px;border-radius:14px;overflow:hidden;margin:10px 0 4px;border:3px solid var(--br);font-size:.7em;font-weight:800;color:#fff}.seg div{display:flex;align-items:center;justify-content:center;white-space:nowrap}
+.strip{display:flex;justify-content:center;gap:4px;align-items:center;font-size:clamp(28px,6vw,52px);flex-wrap:wrap}.strip span{padding:2px 8px;border-radius:14px}.strip .h{background:var(--bl);animation:pop .6s}.strip small{font-size:.4em}
+.tray{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;min-height:54px;margin:8px 0}
+.chip{background:var(--br);color:#fff;border-radius:14px;padding:4px 14px;font-weight:800;font-size:.95em;cursor:grab;touch-action:none;user-select:none;border:0;font-family:inherit}
+.chip.sel{outline:5px solid #ffb300}.chip.fl{box-shadow:0 8px 18px rgba(0,0,0,.4)}
+.boxes{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.box{border:4px dashed var(--bl);background:var(--bl2);border-radius:20px;padding:8px;min-height:120px;cursor:pointer;font-weight:800;text-align:center}
+.box .chip{display:inline-block;margin:2px;font-size:.8em;background:var(--bl);cursor:default}
+.sq{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.sq .opt{text-align:center;font-size:1.1em;position:relative}.sq .n{position:absolute;top:-10px;left:-6px;background:var(--bl);color:#fff;border-radius:50%;width:34px;height:34px;display:flex;align-items:center;justify-content:center}
+.sh{animation:sh .4s}@keyframes sh{25%{transform:translateX(-9px)}75%{transform:translateX(9px)}}
+@keyframes pop{0%{transform:scale(.6)}70%{transform:scale(1.12)}100%{transform:scale(1)}}
+.fx{position:fixed;top:-40px;font-size:34px;pointer-events:none;z-index:50;animation:fx 1.4s ease-in forwards}@keyframes fx{to{transform:translateY(105vh) rotate(200deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<div class="wrap"><header><span style="font-size:42px" aria-hidden="true">💧</span><h1>El agua en la Tierra</h1><span class="pill" id="sc">⭐ 0</span><button class="btn b" id="mu" aria-label="Sonido" style="padding:2px 14px">🔊</button></header>
+<div class="bar" aria-label="Progreso"><i id="pb"></i></div><div class="lv" id="lv"></div><main id="m"></main></div>
+<script>
+/* ===== CONTENIDO (edita aquí) ===== */
+function drops(s){var h='<div class="drops" aria-hidden="true">';for(var i=0;i<100;i++)h+='<i style="animation-delay:'+i*8+'ms">'+(i<s?"🔵":"🩵")+'</i>';return h+'</div>'}
+function strip(a){var d=[["☀️🌊","Evaporación"],["☁️","Condensación"],["🌧️","Precipitación"],["🏞️","Colección"]];return'<div class="strip">'+d.map(function(x,i){return(i?'<small>➜</small>':'')+'<span class="'+(i==a?"h":"")+'" title="'+x[1]+'">'+x[0]+'</span>'}).join("")+'</div>'}
+var L=[
+{n:"Misión 1",t:"¿Dónde está el agua?",ic:"🌍",min:"10 min",tip:"Pida al grupo que adivine antes de tocar: ¿más agua salada o dulce?",s:[
+{y:"ch",q:"Si toda el agua de la Tierra fueran 100 gotas, ¿cuántas serían saladas (de mar)?",o:["97 gotas","50 gotas","75 gotas"],e:"¡Casi toda! 97 gotas son saladas (océanos y mares). Solo 3 gotas son de agua dulce.",v:function(){return drops(97)+'<p class="c">🔵 salada · 🩵 dulce</p>'}},
+{y:"dr",q:"¿Salada o dulce? Lleva cada lugar a su caja.",b:[["s","Agua salada","🌊"],["d","Agua dulce","💧"]],i:[["Océano Pacífico","s"],["Mar","s"],["Río","d"],["Lago Titicaca","d"],["Glaciar","d"],["Laguna de montaña","d"]],e:"El agua de mar es salada. Ríos, lagos, lagunas y glaciares tienen agua dulce, la que podemos beber (después de limpiarla)."},
+{y:"ch",q:"De las pocas gotas de agua dulce, ¿dónde está casi toda?",o:["Congelada en glaciares y hielo","En los ríos y lagos","En las nubes"],e:"Casi 7 de cada 10 gotas dulces están congeladas en glaciares. ¡Por eso hay que cuidar el agua dulce!",v:function(){return'<div class="seg"><div style="width:69%;background:#1e78c8">Hielo 69%</div><div style="width:30%;background:#8a5a34">Subterránea 30%</div><div style="width:1%;background:#2fb7c9"></div></div><div class="c" style="font-size:.8em">Ríos y lagos: ¡menos de 1%!</div>'}}]},
+{n:"Misión 2",t:"Los estados del agua",ic:"🧊",min:"10 min",tip:"Los equipos pueden pasar a la pantalla por turnos para arrastrar.",s:[
+{y:"dr",q:"¿Sólido, líquido o gaseoso? Arrastra cada uno a su caja.",b:[["s","Sólido","❄️"],["l","Líquido","💧"],["g","Gaseoso","☁️"]],i:[["Glaciar","s"],["Nieve","s"],["Hielo","s"],["Río","l"],["Mar","l"],["Lluvia","l"],["Nube","g"],["Vapor","g"],["Vapor de la olla","g"]],e:"Sólido: tiene forma propia (hielo). Líquido:
